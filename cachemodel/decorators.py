@@ -54,7 +54,7 @@ def denormalized_field(field_name):
 
 def find_fields_decorated_with(instance, property_name):
     """helper function that finds all methods decorated with property_name"""
-    non_field_attributes = set(dir(instance.__class__)) - set(instance._meta.get_all_field_names())
+    non_field_attributes = set(dir(instance.__class__)) - set(instance._meta.get_fields())
     for m in non_field_attributes:
         if hasattr(getattr(instance.__class__, m), property_name):
             yield getattr(instance.__class__, m)
